@@ -1,2 +1,3 @@
 # serveless
-Learning Serverless Architecture
+Learning serverless Architecture - Lessons from CloudGuru
+Rene Sobral
