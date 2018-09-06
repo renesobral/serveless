@@ -88,6 +88,13 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+.sectionTitle {
+  font-size: 4.2rem;
+  min-height: 30vh;
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
 
 .section--alignCentered {
   text-align: center;
