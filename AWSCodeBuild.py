@@ -1,3 +1,4 @@
+import json
 import boto3
 import zipfile
 import StringIO
@@ -5,6 +6,13 @@ import mimetypes
 
 from botocore.client import Config
 
+def lambda_handler(event, context):
+    objT = AWSMoveProduction()
+    objT.run()
+    return {
+        "statusCode": 200,
+        "body": json.dumps('Hello from Lambda!')
+    }
 
 class AWSMoveProduction(object):
     def __init__(self):
@@ -24,6 +32,3 @@ class AWSMoveProduction(object):
                 my_publish.upload_fileobj(file, file_name,
                                           ExtraArgs={'ContentType': mimetypes.guess_type(file_name)[0]})
                 my_publish.Object(file_name).Acl().put(ACL='public-read')
-
-objT = AWSMoveProduction()
-objT.run()
