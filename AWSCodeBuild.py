@@ -9,6 +9,7 @@ from botocore.client import Config
 def lambda_handler(event, context):
     objT = AWSMoveProduction()
     try:
+        print str(event)
         objT.run(event)
     except:
         objT.publish("Error on deployment:")
@@ -43,7 +44,7 @@ class AWSMoveProduction(object):
 
         if job:
             for artifact in job["data"]["inputArtifacts"]:
-                if artifact["name"] == "MyAppBuild":
+                if artifact["name"] == "MyApp":
                     location = artifact["location"]["s3Location"]
 
         print "Building from: " + str(location)
