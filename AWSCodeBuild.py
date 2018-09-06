@@ -20,7 +20,7 @@ def lambda_handler(event, context):
 
     if job:
         codepipeline = boto3.client('codepipeline')
-        codepipeline.put_job_sucess_result(jobId=job["id"])
+        codepipeline.put_job_success_result(jobId=job["id"])
 
     return {
         "statusCode": 200,
@@ -43,7 +43,7 @@ class AWSMoveProduction(object):
 
         if job:
             for artifact in job["data"]["inputArtifacts"]:
-                if artifact["name"] == "MuAppBuild":
+                if artifact["name"] == "MyAppBuild":
                     location = artifact["location"]["s3Location"]
 
         print "Building from: " + str(location)
