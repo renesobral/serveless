@@ -5,10 +5,11 @@ phases:
     commands:
       - echo "Nothing to do yet"
 
-
 artifacts:
   files:
     - index.html
     - favicon.ico
-    - styles/*
-    - images/*
+    - styles/main.cs
+    - images/example1.png
+    - images/example3.png
+    - images/example2.png
