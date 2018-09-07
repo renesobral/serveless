@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>1Edge changing the world</title>
+    <style media="screen">
+      .errorBox {
+        boder: 1px sloid red;
+        background-color: #eebbbb;
+        margin: 1em;
+        padding: 2em;
+      }
+      .errorBox--hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <label>Name: <input id="name" type="text"/></label>
+      <button id="submitInfo">Click me!</button>
+      <div id="content"></div>
+      <div id="errorBox"></div>
+    </main>
+
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script type="text/babel" data-presets="latest">
+      const btn = document.getElementById("submitInfo");
+      const errorBox = document.getElementById("errorBox");
+      const getMessage = (name) =>  `Welcome to JavaScript, ${name}!`;
+      const contentArea = document.getElementById("content");
+
+
+      btn.addEventListener('click', (evt) => {
+        errorBox.className = "errorBox--hidden";
+        contentArea.textContent = "";
+        let inputName = document.getElementById("name").value;
+        if (inputName.length < 2) {
+          errorBox.textContent = "We need a name";
+          errorBox.className = "errorBox";
+        }
+        else {
+          contentArea.textContent = getMessage(inputName);
+        }
+      });
+    </script>
+
+  </body>
+
+</html>
