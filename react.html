@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>1Edge changing the world</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/mocha@3.4.2/mocha.css" charset="utf-8">
+    <style media="screen">
+      .messageBox {
+        boder: 1px sloid red;
+        margin: 1em;
+        padding: 2em;
+      }
+      .error {
+        border-color: red;
+        background-color: #eebbbb;
+      }
+      .success {
+        border-color: blue;
+        background-color: #bbbbcb;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main id="content">
+    </main>
+
+    <div id="mocha"></div>
+
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/chai@4.0.2/chai.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/mocha@3.4.2/mocha.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+
+    <script type="text/babel" data-presets="react">
+      const mainObj = document.getElementById('content');
+      let htmlObjects = '<div>Hello world!!</dev>';
+        class NameInput extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              message: {
+                type: undefined,
+                body: undefined
+              }
+            };
+
+            this.buttonClicked = this.buttonClicked.bind(this);
+          }
+          buttonClicked(evt) {
+            let name = this.refs.nameInput.value;
+            this.setState({
+              message: {
+                type: name ? "success" : "error",
+                body: name ? "Your name " + name : "Type a valid name"
+              }
+            });
+          };
+          render() {
+            let msg = this.state.message;
+            return (
+              <div>
+              <label>Name: <input ref="nameInput" type="text"/></label>
+              <button onClick={this.buttonClicked} >Click me!</button>
+              <MessageBox type={msg.type} message={msg.body}/>
+              </div>
+            )
+          }
+        }
+        class MessageBox extends React.Component {
+          render() {
+            return (
+              <div className={"messageBox " + (this.props.type || "hidden")}>
+                {this.props.message}
+              </div>
+            )
+          }
+        }
+
+      ReactDOM.render(<NameInput/>,mainObj);
+    </script>
+    <script type="text/babel" data-presets="react">
+      const assert = chai.assert;
+      mocha.ui("bdd");
+      mocha.reporter("html")
+
+      describe("Example tests", () => {
+        it("Prove that Math works", () => {
+          assert.equal(5, 3+2, "Math Does Works");
+
+        });
+        it("Found it", ()=> {
+          assert.isDefined(MessageBox, "Object Not There");
+        });
+      })
+      describe("Document Tests", ()=> {
+        it("Bla Bla BLa", ()=>{
+          let msgBox = document.querySelector(".messageBox");
+          assert.isDefined(msgBox, "Message box is here");
+          assert.include(msgBox.classList.value, "hidden", "Message box not hidden");
+        })
+      })
+      mocha.run();
+    </script>
+
+  </body>
+
+</html>

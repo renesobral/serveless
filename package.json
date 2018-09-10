@@ -1,0 +1,40 @@
+{
+  "name": "serverless",
+  "version": "1.0.0",
+  "description": "My First AWS Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "webpack-watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renesobral/serveless.git"
+  },
+  "keywords": [
+    "Node",
+    "React",
+    "CSS",
+    "HTML",
+    "GIT"
+  ],
+  "author": "Rene Sobral",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renesobral/serveless/issues"
+  },
+  "homepage": "https://github.com/renesobral/serveless#readme",
+  "dependencies": {
+    "local-web-server": "^2.6.0",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.17.3",
+    "webpack-cli": "^3.1.0"
+  }
+}
